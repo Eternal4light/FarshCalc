@@ -1,0 +1,77 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FarshCalc.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="600" Width="450" Height="600"
+        x:Class="FarshCalc.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="FarshCalc"
+		x:DataType ="vm:MainWindowViewModel">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<Grid Background="Bisque">
+		<Border 
+			HorizontalAlignment="Center"
+			VerticalAlignment="Center"
+			CornerRadius="15"
+			Background="Gray">
+			<StackPanel>
+				<StackPanel 
+					Orientation="Horizontal"
+					HorizontalAlignment="Center"
+					Spacing="15">
+					<TextBox
+						Width="25" 
+						Height="25"
+						Text="{Binding OperandX.Value, Mode=TwoWay}"
+						Watermark="X"/>
+					<TextBox 
+						Width="25" 
+						Height="25"
+						Text="{Binding OperandY.Value, Mode=TwoWay}"
+						Watermark="Y"/>
+				</StackPanel>
+				<Border 
+					CornerRadius="5"
+					HorizontalAlignment="Center"
+					Margin="15">
+					<TextBlock  
+						MinWidth="25" 
+						MinHeight="25" 
+						Text="{Binding	Result.Value, Mode=TwoWay}"/>
+				</Border>
+				
+				<StackPanel
+					Orientation="Horizontal"
+					HorizontalAlignment="Center"
+					Spacing="15">
+					<Button
+						Content="{Binding SummButtonName}" 
+						Command="{Binding CalculateCommand}"
+						CommandParameter="+"/>
+					<Button 
+						Content="{Binding SubtractButtonName}"
+						Command="{Binding CalculateCommand}"
+						CommandParameter="-"/>
+					<Button 
+						Content="{Binding MultiplyButtonName}" 
+						Command="{Binding CalculateCommand}"
+						CommandParameter="*"/>
+					<Button 
+						Content="{Binding DevideButtonName}"
+						Command="{Binding CalculateCommand}"
+						CommandParameter="/"/>
+					<Button
+						Content="{Binding ExponentButtonName}"
+						Command="{Binding CalculateCommand}"
+						CommandParameter="^"/>
+				</StackPanel>
+			</StackPanel>
+		</Border>
+	</Grid>
+
+</Window>
